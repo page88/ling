@@ -11,6 +11,8 @@ import com.page.ling.greendao.contacts;
 import com.page.ling.utils.DbGreenUtil;
 import com.page.ling.utils.Logger;
 import com.page.ling.widget.MyCheckBox;
+import com.page.ling.widget.RippleView;
+import com.page.ling.widget.RippleView.OnCompleteClickListener;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -43,7 +45,7 @@ public class ContactsActivity extends Activity {
     private ListView lv_contacts;
     private ImageView iv_title_back;
     private LinearLayout ll_title_back;
-    private Button bt_ok;
+    private RippleView bt_ok;
     private ContactsAdapter mContactsAdapter;
     private LingContactsCacheDao mLingContactsCacheDao;
     private Handler mHandler;
@@ -56,7 +58,7 @@ public class ContactsActivity extends Activity {
 		lv_contacts = (ListView) findViewById(R.id.lv_contacts);
 		iv_title_back = (ImageView) findViewById(R.id.iv_title_back);
 		ll_title_back = (LinearLayout) findViewById(R.id.ll_title_back);
-		bt_ok = (Button) findViewById(R.id.bt_ok);
+		bt_ok = (RippleView) findViewById(R.id.bt_ok);
 		
 		mContactsInfoList = new ArrayList<ContactsInfo>();
 		mContactsAdapter = new ContactsAdapter();
@@ -76,7 +78,7 @@ public class ContactsActivity extends Activity {
 			}			
 		});
 		
-		bt_ok.setOnClickListener(new OnClickListener(){
+		bt_ok.setOnCompleteClickListener(new OnCompleteClickListener(){
 
 			@Override
 			public void onClick(View v) {
